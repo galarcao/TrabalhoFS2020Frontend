@@ -30,6 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoginComponent } from './component/template/login/login.component';
 import { SignupComponent } from './component/template/signup/signup.component';
+import { AgendamentoComponent } from './component/template/agendamento/agendamento.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SignupComponent } from './component/template/signup/signup.component';
     MainComponent,
     LoginComponent,
     SignupComponent,
+    AgendamentoComponent,
     PublicComponent
   ],
   imports: [

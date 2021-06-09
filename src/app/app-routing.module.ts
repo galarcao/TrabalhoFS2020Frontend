@@ -3,6 +3,7 @@ import { LoginComponent } from './component/template/login/login.component';
 import { AutenticacaoGuard } from './util/autenticacao.guard';
 import { MainComponent } from './component/template/main/main.component';
 import { PublicComponent } from './component/template/public/public.component';
+import { AgendamentoComponent } from './component/template/agendamento/agendamento.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent},
       { path: 'signup', component: SignupComponent},
+      { path: 'agendamento', component: AgendamentoComponent},
     ]
 }
 
