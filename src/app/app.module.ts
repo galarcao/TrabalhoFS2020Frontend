@@ -25,11 +25,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
 import { LoginComponent } from './component/template/login/login.component';
 import { SignupComponent } from './component/template/signup/signup.component';
+import { NovoAgendamentoComponent } from './component/agendamento/novo-agendamento/novo-agendamento.component';
+import { AgendamentoComponent } from './component/agendamento/home/agendamento.component';
+import { AnalisarAgendamentoComponent } from './component/agendamento/analisar-agendamento/analisar-agendamento.component';
+import { LOCALE_ID } from '@angular/core';
+import pt from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+registerLocaleData(pt);
 
 @NgModule({
   declarations: [
@@ -41,7 +49,10 @@ import { SignupComponent } from './component/template/signup/signup.component';
     MainComponent,
     LoginComponent,
     SignupComponent,
-    PublicComponent
+    PublicComponent,
+    NovoAgendamentoComponent,
+    AgendamentoComponent,
+    AnalisarAgendamentoComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,9 +75,14 @@ import { SignupComponent } from './component/template/signup/signup.component';
     MatNativeDateModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: Interceptador, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptador, multi: true },
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+    {provide: LOCALE_ID, useValue: 'pt'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
