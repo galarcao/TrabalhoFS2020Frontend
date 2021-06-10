@@ -25,7 +25,6 @@ export class NovoAgendamentoComponent implements OnInit {
     '16:00',
     '17:00',
   ]
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 

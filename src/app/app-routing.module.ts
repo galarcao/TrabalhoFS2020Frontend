@@ -9,7 +9,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './component/template/home/home.component';
-import { AgendamentoComponent } from './component/agendamento/home/agendamento.component';
+import { AgendamentoComponent } from './component/agendamento/agendamento.component';
+import { HomeAgendamentoComponent } from './component/agendamento/home/home-agendamento.component';
 import { AnalisarAgendamentoComponent } from './component/agendamento/analisar-agendamento/analisar-agendamento.component';
 
 
@@ -26,11 +27,14 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
-      //#region Mover para AutenticacaoGuard quando estiver pronta a autenticação.
-      { path: 'agendamento', component: AgendamentoComponent },
-      { path: 'novoAgendamento', component: NovoAgendamentoComponent },
-      { path: 'analisarAgendamento', component: AnalisarAgendamentoComponent },
-      //#endregion
+    ]
+  },
+  {
+    path: 'agendamento', component: AgendamentoComponent,
+    children: [
+      { path: '', component: HomeAgendamentoComponent },
+      { path: 'novo', component: NovoAgendamentoComponent },
+      { path: 'analisar', component: AnalisarAgendamentoComponent },
     ]
   }
 ];

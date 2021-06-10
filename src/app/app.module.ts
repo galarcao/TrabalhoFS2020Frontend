@@ -32,8 +32,10 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { LoginComponent } from './component/template/login/login.component';
 import { SignupComponent } from './component/template/signup/signup.component';
 import { NovoAgendamentoComponent } from './component/agendamento/novo-agendamento/novo-agendamento.component';
-import { AgendamentoComponent } from './component/agendamento/home/agendamento.component';
+import { AgendamentoComponent } from './component/agendamento/agendamento.component';
+import { HomeAgendamentoComponent } from './component/agendamento/home/home-agendamento.component';
 import { AnalisarAgendamentoComponent } from './component/agendamento/analisar-agendamento/analisar-agendamento.component';
+import { MatTabsModule } from '@angular/material/tabs'
 import { LOCALE_ID } from '@angular/core';
 import pt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
@@ -53,6 +55,7 @@ registerLocaleData(pt);
     NovoAgendamentoComponent,
     AgendamentoComponent,
     AnalisarAgendamentoComponent,
+    HomeAgendamentoComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +80,7 @@ registerLocaleData(pt);
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatStepperModule,
+    MatTabsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptador, multi: true },

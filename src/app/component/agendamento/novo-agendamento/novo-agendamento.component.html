@@ -1,42 +1,45 @@
-<mat-vertical-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Selecione uma data disponível</ng-template>
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Selecione uma data</mat-label>
-                <input matInput formControlName="firstCtrl" required [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
-            <div>
-                <button mat-button matStepperNext>Próximo</button>
-            </div>
-        </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Horário</ng-template>
-            <mat-form-field appearance="fill">
-                <mat-label>Escolha uma horário disponível</mat-label>
-                <mat-select formControlName="secondCtrl" required>
-                  <mat-option *ngFor="let hour of mockHourAvaliable" [value]="hour">{{hour}}</mat-option>
-                </mat-select>
-              </mat-form-field>
+<div class="container">
+    <mat-vertical-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Selecione uma data disponível</ng-template>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Selecione uma data</mat-label>
+                    <input matInput formControlName="firstCtrl" required [matDatepickerFilter]="myFilter"
+                        [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>Próximo</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Horário</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>Escolha uma horário disponível</mat-label>
+                    <mat-select formControlName="secondCtrl" required>
+                        <mat-option *ngFor="let hour of mockHourAvaliable" [value]="hour">{{hour}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Voltar</button>
+                    <button mat-button matStepperNext>Próximo</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Revisão</ng-template>
+            <p>Valide dados informados</p>
+            <p>Data: {{ this.firstFormGroup.value.firstCtrl | date:'shortDate' }}</p>
+            <p>Hora: {{ this.secondFormGroup.value.secondCtrl }}</p>
             <div>
                 <button mat-button matStepperPrevious>Voltar</button>
-                <button mat-button matStepperNext>Próximo</button>
+                <button mat-button (click)="stepper.reset()">Recomeçar</button>
+                <button mat-button (click)="solicitarAgendamento()">Solicitar agendamento</button>
             </div>
-        </form>
-    </mat-step>
-    <mat-step>
-        <ng-template matStepLabel>Revisão</ng-template>
-        <p>Valide dados informados:</p>
-        <p>Data: {{ this.firstFormGroup.value.firstCtrl | date:'shortDate' }}</p>
-        <p>Hora: {{ this.secondFormGroup.value.secondCtrl }}</p>
-        <div>
-            <button mat-button matStepperPrevious>Voltar</button>
-            <button mat-button (click)="stepper.reset()">Resetar</button>
-            <button mat-button (click)="solicitarAgendamento()">Solicitar agendamento</button>
-        </div>
-    </mat-step>
-</mat-vertical-stepper>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>
